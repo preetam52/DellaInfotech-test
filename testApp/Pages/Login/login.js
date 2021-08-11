@@ -23,6 +23,7 @@ export default class Login extends Component {
                     if(!data) {
                         let myUser = {
                             uid: user.uid,
+                            posts: []
                         }
                         firebaseService.setDataToFireStore('users',user.uid, myUser)
                     }
@@ -72,7 +73,7 @@ export default class Login extends Component {
                     <TextInput style={styles.inp} placeholder="Enter your mobile number" placeholderTextColor= "#70757a" keyboardType="phone-pad"
                     onChangeText={(e) => this.onTextChange(e, 'phoneNo')}/>
 
-                    <TouchableOpacity style={styles.loginBtn} activeOpacity={0.8} onPress={() => this.requestForOTP()}>
+                    <TouchableOpacity style={styles.loginBtn} activeOpacity={0.8} onPress={() => this.state.phoneNo && this.requestForOTP()}>
                         <Text style={styles.btnTxt}>Request for OTP</Text>
                     </TouchableOpacity>
                     </View>
@@ -81,7 +82,7 @@ export default class Login extends Component {
 
                     <View>
                     <TextInput style={styles.inp} placeholder="Enter your OTP" placeholderTextColor= "#70757a" keyboardType="phone-pad"
-                    onChangeText={(e) => this.onTextChange(e, 'otp')}/>
+                    onChangeText={(e) => this.state.otp && this.onTextChange(e, 'otp')}/>
 
                     <TouchableOpacity style={styles.loginBtn} activeOpacity={0.8} onPress={() => this.verifyOTP()}>
                         <Text style={styles.btnTxt}>Verify</Text>

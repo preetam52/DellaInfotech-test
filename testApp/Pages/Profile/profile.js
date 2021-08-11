@@ -20,6 +20,7 @@ export default Profile  = (props) => {
             .doc(uid)
             .onSnapshot(documentSnapshot => {
               console.log('User data: ', documentSnapshot.data());
+              if(documentSnapshot.data())
               setPosts(documentSnapshot.data().posts)
 
             });

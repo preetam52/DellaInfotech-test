@@ -38,6 +38,9 @@ const Gallery = ({posts}) => {
                 numColumns={3}
                 keyExtractor={extractItemKey}
                 renderItem={renderItem}
+                ListHeaderComponent={() => (!posts?.length ? 
+                    <Text style={{textAlign: "center"}}>The list is empty.</Text>  
+                    : null)}
             />
         </View>
     )
